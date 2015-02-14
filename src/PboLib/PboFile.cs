@@ -7,7 +7,8 @@ using Common.Logging;
 
 namespace PboLib
 {
-    public class PboFile
+
+    public class PboFile : IPboFile
     {
         private readonly ILog _log;
 
@@ -16,7 +17,7 @@ namespace PboLib
             _log = log;
         }
 
-        public void PackDirectory(string inputFolder, string pboFileName)
+        public void PackDirectory(bool overwriteExisting, string inputFolder, string pboFileName)
         {
             try
             {
@@ -31,17 +32,24 @@ namespace PboLib
                 // If a file already exists make a backup.
                 if (File.Exists(pboFileName))
                 {
-                    var str = string.Format("{0}.bak", pboFileName);
-
-                    // If a old backup exists, delete it.
-                    if (File.Exists(str))
+                    if (overwriteExisting)
                     {
-                        _log.Trace("Old backup file detected. Removing the backup file.");
-                        File.Delete(str);
-                    }
+                        var str = string.Format("{0}.bak", pboFileName);
 
-                    _log.Trace("Found existing PBO with the same name. Renaming the file to have a .bak extension.");
-                    File.Move(pboFileName, str);
+                        // If a old backup exists, delete it.
+                        if (File.Exists(str))
+                        {
+                            _log.Trace("Old backup file detected. Removing the backup file.");
+                            File.Delete(str);
+                        }
+
+                        _log.Trace("Found existing PBO with the same name. Renaming the file to have a .bak extension.");
+                        File.Move(pboFileName, str);
+                    }
+                    else
+                    {
+                        throw new IOException("Destination file already exists. Please clear the destination or use the overwrite flag.");
+                    }
                 }
 
                 var files = Directory.GetFiles(inputFolder, "*", SearchOption.AllDirectories);

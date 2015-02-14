@@ -1,4 +1,4 @@
-﻿namespace PboBuilder
+﻿namespace PboLib
 {
     public enum PboFormat
     {

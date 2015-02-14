@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Remoting.Messaging;
 using PboLib;
 using Common.Logging;
 
@@ -9,22 +8,23 @@ namespace PboBuilder
     {
         public static void Main(string[] args)
         {
-            if (args == null || args.Length < 3)
+            try
             {
-                ShowInfo();
-            }
 
-            var parms = new RunParameters();
-            parms.PopulateFromCommandLineArguments(args);
+                if (args == null || args.Length < 3)
+                {
+                    ShowInfo();
+                }
 
-            if (parms.PboFormat == PboFormat.Arma3)
-            {
-                var pbo = new PboFile(LogManager.GetLogger<object>());
-                pbo.PackDirectory(parms.FolderToPack, parms.DestinationFilePath);
+                var parms = new RunParameters();
+                parms.PopulateFromCommandLineArguments(args);
+
+                var pbo = PboFileFactory.CreatePboFile(parms.PboFormat, LogManager.GetLogger<object>());
+
+                pbo.PackDirectory(parms.IsOverwriteEnabled, parms.FolderToPack, parms.DestinationFilePath);
             }
-            else
+            catch
             {
-                Console.WriteLine("Could not perform operation due to missing arguments.");
                 Environment.Exit(1);
             }
         }

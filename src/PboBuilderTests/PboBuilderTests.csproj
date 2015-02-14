@@ -59,6 +59,10 @@
       <Project>{831BE878-EF70-4356-A8D2-A5295284EC75}</Project>
       <Name>PboBuilder</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PboLib\PboLib.csproj">
+      <Project>{AB8F803D-CC8D-4800-8EE4-560E3B1AA934}</Project>
+      <Name>PboLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

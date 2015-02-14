@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using NUnit.Framework;
 using PboBuilder;
+using PboLib;
 
 namespace PboBuilderTests
 {
