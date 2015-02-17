@@ -18,7 +18,7 @@ namespace PboLib
                 return new PboFile(logger);
             }
 
-            throw new ArgumentException(string.Format("Unknown format {0}", Enum.GetName(typeof (PboFormat), format)));
+            throw new ArgumentException(string.Format("The format \"{0}\" could not be created.", Enum.GetName(typeof (PboFormat), format)));
         }
     }
 }

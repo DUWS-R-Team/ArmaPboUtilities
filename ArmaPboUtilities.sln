@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PboBuilder", "src\PboBuilde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PboLib", "src\PboLib\PboLib.csproj", "{AB8F803D-CC8D-4800-8EE4-560E3B1AA934}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PboLibTests", "src\PboLibTests\PboLibTests.csproj", "{5CE05157-E47D-46D0-BD68-4291DA8F82A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,11 +53,22 @@ Global
 		{AB8F803D-CC8D-4800-8EE4-560E3B1AA934}.Release|Mixed Platforms.Build.0 = Release|x64
 		{AB8F803D-CC8D-4800-8EE4-560E3B1AA934}.Release|x64.ActiveCfg = Release|x64
 		{AB8F803D-CC8D-4800-8EE4-560E3B1AA934}.Release|x64.Build.0 = Release|x64
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A0D949A-20E2-422D-B555-17F31E366419} = {BD0A1D42-B03E-4597-8E9D-EDDC7036D01D}
+		{5CE05157-E47D-46D0-BD68-4291DA8F82A1} = {BD0A1D42-B03E-4597-8E9D-EDDC7036D01D}
 	EndGlobalSection
 EndGlobal
