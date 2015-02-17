@@ -31,6 +31,15 @@ namespace PboLib
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PboHeaderEntry"/> class.
+        /// </summary>
+        /// <param name="packingMethod">The packing method.</param>
+        /// <param name="filename">The filename.</param>
+        /// <param name="originalSize">Size of the original.</param>
+        /// <param name="reserved">The reserved.</param>
+        /// <param name="timestamp">The time stamp.</param>
+        /// <param name="dataSize">Size of the data.</param>
         public PboHeaderEntry(PboItemPackingMethod packingMethod, string filename, int originalSize, int reserved, int timestamp, int dataSize)
         {
             FileName = filename;

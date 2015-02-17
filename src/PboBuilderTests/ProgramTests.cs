@@ -1,15 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Moq;
 using NUnit.Framework;
 using PboBuilder;
+using PboLib;
 
 namespace PboBuilderTests
 {
     [TestFixture]
     public class ProgramTests
     {
+        [SetUp]
+        public void TestSetup()
+        {
+            Environment.ExitCode = 0;
+        }
 
         [Test]
         public void Main_Should_Return_Help_Output_When_Empty_Args_Provided()
@@ -24,6 +30,7 @@ namespace PboBuilderTests
 
                 // Act
                 Assert.AreEqual(BuildExpectedHelpOutput(), sw.ToString());
+                Assert.AreEqual(0, Environment.ExitCode);
             }
         }
 
@@ -40,7 +47,33 @@ namespace PboBuilderTests
 
                 // Act
                 Assert.AreEqual(BuildExpectedHelpOutput(), sw.ToString());
+                Assert.AreEqual(0, Environment.ExitCode);
             }
+        }
+
+        [Test]
+        public void Main_Should_Return_Exit_Code_Of_1_When_Exception_Raised()
+        {
+            // Act
+            Program.Main(new []{"-o","-f", "c:\\Blah"});
+
+            // Assert
+            Assert.AreEqual(1, Environment.ExitCode);
+        }
+
+        [Test]
+        public void Main_Should_Execute_Pbo_File_Pack_Directory_When_Arguments_Are_Valid()
+        {
+            // Arrange
+            var pboFileMock = new Mock<IPboFile>(MockBehavior.Strict);
+            pboFileMock.Setup(x => x.PackDirectory(true, "C:\\Blah", "output.pbo"));
+            PboFileFactory.MockPboFile = pboFileMock.Object;
+
+            // Act
+            Program.Main(new []{"-o","-f", "arma3", "C:\\Blah", "output.pbo"});
+
+            // Assert
+            Assert.AreEqual(0, Environment.ExitCode);
         }
 
         private static string BuildExpectedHelpOutput()

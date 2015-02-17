@@ -1,5 +1,8 @@
 namespace PboLib
 {
+    /// <remarks>
+    /// https://community.bistudio.com/wiki/PBO_File_Format
+    /// </remarks>
     public enum PboItemPackingMethod
     {
         Uncompressed = 0,

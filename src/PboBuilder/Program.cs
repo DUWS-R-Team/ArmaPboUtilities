@@ -15,17 +15,19 @@ namespace PboBuilder
                 {
                     ShowInfo();
                 }
+                else
+                {
+                    var parms = new RunParameters();
+                    parms.PopulateFromCommandLineArguments(args);
 
-                var parms = new RunParameters();
-                parms.PopulateFromCommandLineArguments(args);
+                    var pbo = PboFileFactory.CreatePboFile(parms.PboFormat, LogManager.GetLogger<object>());
 
-                var pbo = PboFileFactory.CreatePboFile(parms.PboFormat, LogManager.GetLogger<object>());
-
-                pbo.PackDirectory(parms.IsOverwriteEnabled, parms.FolderToPack, parms.DestinationFilePath);
+                    pbo.PackDirectory(parms.IsOverwriteEnabled, parms.FolderToPack, parms.DestinationFilePath);
+                }
             }
             catch
             {
-                Environment.Exit(1);
+                Environment.ExitCode = 1;
             }
         }
 
